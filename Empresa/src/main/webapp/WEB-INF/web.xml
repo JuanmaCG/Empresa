@@ -1,0 +1,71 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ActualizaNominas</servlet-name>
+  	<display-name>ActualizaNominas</display-name>
+  	<description></description>
+  	<servlet-class>servlets.ActualizaNominas</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AltaEmpleados</servlet-name>
+  	<display-name>AltaEmpleados</display-name>
+  	<description></description>
+  	<servlet-class>servlets.AltaEmpleados</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EmpleadosLista</servlet-name>
+  	<display-name>EmpleadosLista</display-name>
+  	<description></description>
+  	<servlet-class>servlets.EmpleadosLista</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MostrarSalario</servlet-name>
+  	<display-name>MostrarSalario</display-name>
+  	<description></description>
+  	<servlet-class>servlets.MostrarSalario</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MostrarEmpleado</servlet-name>
+  	<display-name>MostrarEmpleado</display-name>
+  	<description></description>
+  	<servlet-class>servlets.MostrarEmpleado</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ModificarEmpleado</servlet-name>
+  	<display-name>ModificarEmpleado</display-name>
+  	<description></description>
+  	<servlet-class>servlets.ModificarEmpleado</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ActualizaNominas</servlet-name>
+  	<url-pattern>/ActualizaNominas</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AltaEmpleados</servlet-name>
+  	<url-pattern>/AltaEmpleados</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpleadosLista</servlet-name>
+  	<url-pattern>/EmpleadosLista</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MostrarSalario</servlet-name>
+  	<url-pattern>/MostrarSalario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MostrarEmpleado</servlet-name>
+  	<url-pattern>/MostrarEmpleado</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ModificarEmpleado</servlet-name>
+  	<url-pattern>/ModificarEmpleado</url-pattern>
+  </servlet-mapping>
+  <error-page>
+  	<exception-type>java.lang.Throwable</exception-type>
+  	<location>/errorPage.jsp</location>
+  </error-page>
+</web-app>
