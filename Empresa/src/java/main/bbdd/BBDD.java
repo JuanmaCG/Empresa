@@ -30,9 +30,9 @@ public class BBDD {
 
 	public void altaEmpleado(Empleado emp) throws SQLException {
 		stmt = con.createStatement();
-		String query = "Insert into Empleados values ('" + emp.nombre + "','" + emp.dni + "','" + emp.sexo + "'," + emp.getCategoria() + "," + emp.anyos + ")";
+		String query = "Insert into empleados values ('" + emp.nombre + "','" + emp.dni + "','" + emp.sexo + "'," + emp.getCategoria() + "," + emp.anyos + ")";
 		stmt.executeUpdate(query);
-		String salario = "Insert into nominas values ('" + emp.dni + "'," + Nomina.sueldo(emp) + ")";
+		String salario = "Insert into nominas values (" + Nomina.sueldo(emp) + ",'" + emp.dni + "')";
 		stmt.executeUpdate(salario);
 		
 	}
@@ -56,18 +56,17 @@ public class BBDD {
 		
 	}
 
-	public List<String> mostrarEmpleados() throws ClassNotFoundException, SQLException {
+	public List<Empleado> mostrarEmpleados() throws ClassNotFoundException, SQLException, DatosNoCorrectosException {
 		stmt = con.createStatement();
-
-		List<String> empleados = new ArrayList<String>();
+		Empleado emp;
+		List<Empleado> empleados = new ArrayList<Empleado>();
 
 		rs = stmt.executeQuery("select * from Empleados");
 
 		while (rs.next()) {
 			char sexo = rs.getString(3).charAt(0);
-			String empleado = rs.getString(1) + "," + rs.getString(2) + "," + sexo + "," + rs.getInt(4) + ","
-					+ rs.getInt(5);
-			empleados.add(empleado);
+			emp = new Empleado(rs.getString(1),rs.getString(2),sexo,rs.getInt(4),rs.getInt(5)); 
+			empleados.add(emp);
 		}
 
 		return empleados;
@@ -76,12 +75,12 @@ public class BBDD {
 
 	public int buscarSalario(String dni) throws SQLException {
 		int salario = 0;
-		String query = "select sueldo from nominas where dni = ?";
+		String query = "select salario from nominas where dni = ?";
 		PreparedStatement ps = this.con.prepareStatement(query);
 		ps.setString(1, dni);
 		rs = ps.executeQuery();
 		while (rs.next()) {
-			salario = rs.getInt("sueldo");
+			salario = rs.getInt("salario");
 		}
 
 		return salario;
@@ -124,7 +123,7 @@ public class BBDD {
 	
 	public void calcularSueldo(Empleado emp) throws SQLException {
 		
-		String query = "update nominas set sueldo = "+Nomina.sueldo(emp)+" where dni = ?";
+		String query = "update nominas set salario = "+Nomina.sueldo(emp)+" where dni = ?";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setString(1, emp.dni);
 		ps.executeUpdate();

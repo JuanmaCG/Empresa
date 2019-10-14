@@ -18,7 +18,16 @@ public class Persona {
 		this.nombre = nombre;
 		this.sexo = sexo;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+	public char getSexo() {
+		return sexo;
+	}
 
+	public String getDni() {
+		return dni;
+	}
 	public void setDni(String dni) {
 		this.dni = dni;
 	}

@@ -1,6 +1,7 @@
 <%@ page import = "bbdd.*" import="java.util.List" import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,7 @@
 </head>
 <body>
 
-	<% 	List<String> empleados = (ArrayList<String>)request.getAttribute("empleados");
-		String[] datos;%>
+	
 		
 	<table border="1px solid black">
 		<tr>
@@ -20,14 +20,16 @@
 			<td>Categoria: </td>
 			<td>Años: </td>
 		</tr>
-		<% for(int i = 0; i < empleados.size(); i++){ %>
-			<tr>
-				<%for(int j = 0; j < 5; j++){ 
-					datos = empleados.get(i).split(",");
-				%>
-		 			<td><%= datos[j] %> </td>
-			<% }  
-			}%>
+		<c:forEach items="${empleados}" var="empleado">
+	        <tr>
+	            <td><c:out value="${empleado.nombre}"></c:out></td>
+	            <td><c:out value="${empleado.dni}"></c:out></td>
+	            <td><c:out value="${empleado.sexo}"></c:out></td>
+	            <td><c:out value="${empleado.categoria}"></c:out></td>
+	            <td><c:out value="${empleado.anyos}"></c:out></td>
+	            
+	        </tr>
+    	</c:forEach>
 		
 		
 		

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bbdd.BBDD;
+import laboral.DatosNoCorrectosException;
+import laboral.Empleado;
 
 /**
  * Servlet implementation class EmpleadosLista
@@ -46,13 +48,16 @@ public class EmpleadosLista extends HttpServlet {
 		try {
 			BBDD bbdd = new BBDD();
 			
-			List<String> listaEmpleados = bbdd.mostrarEmpleados();
+			List<Empleado> listaEmpleados = bbdd.mostrarEmpleados();
 			RequestDispatcher rd;
 			request.setAttribute("empleados", listaEmpleados);
 			rd = request.getRequestDispatcher("/empleados.jsp");
 			rd.forward(request, response);
 			
 		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatosNoCorrectosException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
