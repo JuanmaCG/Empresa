@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import laboral.DatosNoCorrectosException;
+import laboral.Empleado;
+
 public class Backup {
 
 	BBDD bbdd;
@@ -15,12 +18,12 @@ public class Backup {
 		this.bbdd = bbdd;
 	}
 	
-	public void backupbbddafichero() throws ClassNotFoundException, IOException, SQLException {
+	public void backupbbddafichero() throws ClassNotFoundException, IOException, SQLException, DatosNoCorrectosException {
 		File backup = new File("backup.txt");
 		BufferedWriter wr = new BufferedWriter(new FileWriter(backup,false));
 		
-		for(String empleado : bbdd.mostrarEmpleados()) {
-			wr.write(empleado + "\n");
+		for(Empleado empleado : bbdd.mostrarEmpleados()) {
+			wr.write(empleado.toString() + "\n");
 		}
 		
 		wr.close();

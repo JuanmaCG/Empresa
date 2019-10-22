@@ -36,8 +36,8 @@ public class CalculadoraNominas {
 			switch (opcionMenu) {
 				case "1": 
 					
-					for (String empleado : bbdd.mostrarEmpleados()) {
-						System.out.println(empleado);
+					for (Empleado empleado : bbdd.mostrarEmpleados()) {
+						System.out.println(empleado.toString());
 					}
 					
 					break;
@@ -130,9 +130,9 @@ public class CalculadoraNominas {
 					break;
 					
 				case "5":
-					for(String registro : bbdd.mostrarEmpleados()) {
-						dni = registro.split(",")[1];
-						bbdd.calcularSueldo(bbdd.buscarEmpleado(dni));
+					for(Empleado registro : bbdd.mostrarEmpleados()) {
+						
+						bbdd.calcularSueldo(bbdd.buscarEmpleado(registro.dni));
 					}
 					
 					break;
